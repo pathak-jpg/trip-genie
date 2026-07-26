@@ -15,6 +15,16 @@ const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const TripResults = ({ trip, onBack }: Props) => {
   const { destination, plan, tier, budget } = trip;
+  const cost = estimateCost(trip);
+  const [saved, setSaved] = useState<boolean>(Boolean(trip.id));
+
+  const handleSave = () => {
+    const saved = saveTrip(trip);
+    setSaved(true);
+    toast.success(`Saved trip to ${saved.destination.name}`);
+  };
+
+  const handlePrint = () => window.print();
 
   return (
     <div className="min-h-screen">

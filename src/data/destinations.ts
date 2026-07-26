@@ -3,6 +3,11 @@ import manali from "@/assets/dest-manali.jpg";
 import jaipur from "@/assets/dest-jaipur.jpg";
 import udaipur from "@/assets/dest-udaipur.jpg";
 import kerala from "@/assets/dest-kerala.jpg";
+import ladakh from "@/assets/dest-ladakh.jpg";
+import andaman from "@/assets/dest-andaman.jpg";
+import rishikesh from "@/assets/dest-rishikesh.jpg";
+import darjeeling from "@/assets/dest-darjeeling.jpg";
+import varanasi from "@/assets/dest-varanasi.jpg";
 
 export type BudgetTier = "low" | "medium" | "high";
 

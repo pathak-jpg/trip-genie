@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Hotel, Sparkles } from "lucide-react";
+import { ArrowLeft, Hotel, Sparkles, Bookmark, BookmarkCheck, Printer, Wallet } from "lucide-react";
 import ActivityIcon from "./ActivityIcon";
-import { tierLabel, type GeneratedTrip } from "@/data/destinations";
+import { tierLabel, estimateCost, saveTrip, type GeneratedTrip } from "@/data/destinations";
+import { toast } from "sonner";
 
 interface Props {
   trip: GeneratedTrip;

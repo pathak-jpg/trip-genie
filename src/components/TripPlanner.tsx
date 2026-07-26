@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";

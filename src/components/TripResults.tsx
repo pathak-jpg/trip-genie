@@ -43,7 +43,7 @@ const TripResults = ({ trip, onBack }: Props) => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background" />
 
         <div className="relative z-10 container h-full flex flex-col">
-          <div className="pt-8">
+          <div className="pt-8 flex items-center justify-between gap-2 flex-wrap print:hidden">
             <Button
               variant="ghost"
               onClick={onBack}
@@ -51,6 +51,23 @@ const TripResults = ({ trip, onBack }: Props) => {
             >
               <ArrowLeft className="mr-2 h-4 w-4" /> New plan
             </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                onClick={handleSave}
+                className="glass-soft rounded-full hover:shadow-soft transition-all"
+              >
+                {saved ? <BookmarkCheck className="mr-2 h-4 w-4" /> : <Bookmark className="mr-2 h-4 w-4" />}
+                {saved ? "Saved" : "Save trip"}
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={handlePrint}
+                className="glass-soft rounded-full hover:shadow-soft transition-all"
+              >
+                <Printer className="mr-2 h-4 w-4" /> Export
+              </Button>
+            </div>
           </div>
 
           <motion.div

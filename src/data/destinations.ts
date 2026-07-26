@@ -596,10 +596,12 @@ export const tierLabel = (tier: BudgetTier) =>
   tier === "low" ? "Essentials" : tier === "medium" ? "Comfort" : "Signature";
 
 export interface GeneratedTrip {
+  id?: string;
   destination: Destination;
   budget: number;
   tier: BudgetTier;
   plan: TierPlan;
+  createdAt?: number;
 }
 
 export const generateTrip = (destinationId: string, budget: number): GeneratedTrip | null => {
@@ -608,3 +610,52 @@ export const generateTrip = (destinationId: string, budget: number): GeneratedTr
   const tier = categorizeBudget(budget);
   return { destination, budget, tier, plan: destination.tiers[tier] };
 };
+
+export interface CostBreakdown {
+  stay: number;
+  food: number;
+  activities: number;
+  transport: number;
+  total: number;
+  nights: number;
+}
+
+export const estimateCost = (trip: GeneratedTrip): CostBreakdown => {
+  const nights = trip.plan.days.length;
+  const stay = trip.plan.hotel.pricePerNight * nights;
+  const tierMult = trip.tier === "low" ? 1 : trip.tier === "medium" ? 1.6 : 2.6;
+  const food = Math.round(800 * tierMult * (nights + 1));
+  const activities = Math.round(1500 * tierMult * nights);
+  const transport = Math.round(3500 * tierMult);
+  const total = stay + food + activities + transport;
+  return { stay, food, activities, transport, total, nights };
+};
+
+const SAVED_KEY = "tripwise:saved";
+
+export const getSavedTrips = (): GeneratedTrip[] => {
+  try {
+    const raw = localStorage.getItem(SAVED_KEY);
+    return raw ? (JSON.parse(raw) as GeneratedTrip[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const saveTrip = (trip: GeneratedTrip): GeneratedTrip => {
+  const withMeta: GeneratedTrip = {
+    ...trip,
+    id: trip.id ?? `${trip.destination.id}-${Date.now()}`,
+    createdAt: trip.createdAt ?? Date.now(),
+  };
+  const existing = getSavedTrips().filter((t) => t.id !== withMeta.id);
+  const next = [withMeta, ...existing].slice(0, 20);
+  localStorage.setItem(SAVED_KEY, JSON.stringify(next));
+  return withMeta;
+};
+
+export const removeSavedTrip = (id: string) => {
+  const next = getSavedTrips().filter((t) => t.id !== id);
+  localStorage.setItem(SAVED_KEY, JSON.stringify(next));
+};
+

@@ -123,7 +123,43 @@ const TripResults = ({ trip, onBack }: Props) => {
         </motion.div>
       </div>
 
-      {/* Itinerary */}
+      {/* Cost breakdown */}
+      <div className="container pb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="bg-card border border-border rounded-[2rem] p-8 md:p-10"
+        >
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary mb-6">
+            <Wallet className="h-4 w-4" /> Estimated cost · {cost.nights} nights
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: "Stay", value: cost.stay },
+              { label: "Food", value: cost.food },
+              { label: "Activities", value: cost.activities },
+              { label: "Transport", value: cost.transport },
+            ].map((item) => (
+              <div key={item.label}>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</div>
+                <div className="font-serif text-2xl mt-1">{formatINR(item.value)}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Estimated total</div>
+              <div className="font-serif text-4xl md:text-5xl text-primary">{formatINR(cost.total)}</div>
+            </div>
+            <div className="text-sm text-muted-foreground max-w-sm">
+              Indicative for two travellers. Actuals vary by season, availability, and personal choices.
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
       <div className="container pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

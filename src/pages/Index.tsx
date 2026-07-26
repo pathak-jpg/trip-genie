@@ -5,6 +5,8 @@ import TripPlanner from "@/components/TripPlanner";
 import TripResults from "@/components/TripResults";
 import LoadingScreen from "@/components/LoadingScreen";
 import PageTransition from "@/components/PageTransition";
+import DestinationsShowcase from "@/components/DestinationsShowcase";
+import SavedTrips from "@/components/SavedTrips";
 import { generateTrip, type GeneratedTrip } from "@/data/destinations";
 import { toast } from "sonner";
 
@@ -13,6 +15,8 @@ type View = "home" | "loading" | "results";
 const Index = () => {
   const [view, setView] = useState<View>("home");
   const [trip, setTrip] = useState<GeneratedTrip | null>(null);
+  const [selectedDestination, setSelectedDestination] = useState<string>("goa");
+  const [savedRefresh, setSavedRefresh] = useState<number>(0);
 
   const handleGenerate = (destinationId: string, budget: number) => {
     const result = generateTrip(destinationId, budget);
@@ -29,8 +33,21 @@ const Index = () => {
   };
 
   const handleBack = () => {
+    setSavedRefresh((k) => k + 1);
     setView("home");
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleOpenSaved = (saved: GeneratedTrip) => {
+    setTrip(saved);
+    setView("results");
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
+  const handlePickDestination = (id: string) => {
+    setSelectedDestination(id);
+    const el = document.getElementById("planner");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -59,6 +76,7 @@ const Index = () => {
                 <nav className="hidden md:flex items-center gap-8 text-sm text-foreground/70">
                   <a href="#planner" className="hover:text-foreground transition-colors">Plan</a>
                   <a href="#destinations" className="hover:text-foreground transition-colors">Destinations</a>
+                  <a href="#saved" className="hover:text-foreground transition-colors">Saved</a>
                   <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
                 </nav>
               </header>
@@ -85,11 +103,20 @@ const Index = () => {
                 </motion.div>
 
                 {/* Planner */}
-                <div id="planner" className="mt-16 md:mt-20">
-                  <TripPlanner onGenerate={handleGenerate} />
+                <div id="planner" className="mt-16 md:mt-20 scroll-mt-24">
+                  <TripPlanner
+                    onGenerate={handleGenerate}
+                    initialDestination={selectedDestination}
+                  />
                 </div>
               </div>
             </section>
+
+            {/* Destinations showcase */}
+            <DestinationsShowcase onSelect={handlePickDestination} />
+
+            {/* Saved Trips */}
+            <SavedTrips refreshKey={savedRefresh} onOpen={handleOpenSaved} />
 
             {/* How it works */}
             <section id="how" className="py-24 md:py-32 container">

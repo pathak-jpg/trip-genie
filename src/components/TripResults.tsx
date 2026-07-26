@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Hotel, Sparkles } from "lucide-react";
+import { ArrowLeft, Hotel, Sparkles, Bookmark, BookmarkCheck, Printer, Wallet } from "lucide-react";
 import ActivityIcon from "./ActivityIcon";
-import { tierLabel, type GeneratedTrip } from "@/data/destinations";
+import { tierLabel, estimateCost, saveTrip, type GeneratedTrip } from "@/data/destinations";
+import { toast } from "sonner";
 
 interface Props {
   trip: GeneratedTrip;
@@ -13,6 +15,16 @@ const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const TripResults = ({ trip, onBack }: Props) => {
   const { destination, plan, tier, budget } = trip;
+  const cost = estimateCost(trip);
+  const [saved, setSaved] = useState<boolean>(Boolean(trip.id));
+
+  const handleSave = () => {
+    const saved = saveTrip(trip);
+    setSaved(true);
+    toast.success(`Saved trip to ${saved.destination.name}`);
+  };
+
+  const handlePrint = () => window.print();
 
   return (
     <div className="min-h-screen">
@@ -31,7 +43,7 @@ const TripResults = ({ trip, onBack }: Props) => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background" />
 
         <div className="relative z-10 container h-full flex flex-col">
-          <div className="pt-8">
+          <div className="pt-8 flex items-center justify-between gap-2 flex-wrap print:hidden">
             <Button
               variant="ghost"
               onClick={onBack}
@@ -39,6 +51,23 @@ const TripResults = ({ trip, onBack }: Props) => {
             >
               <ArrowLeft className="mr-2 h-4 w-4" /> New plan
             </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                onClick={handleSave}
+                className="glass-soft rounded-full hover:shadow-soft transition-all"
+              >
+                {saved ? <BookmarkCheck className="mr-2 h-4 w-4" /> : <Bookmark className="mr-2 h-4 w-4" />}
+                {saved ? "Saved" : "Save trip"}
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={handlePrint}
+                className="glass-soft rounded-full hover:shadow-soft transition-all"
+              >
+                <Printer className="mr-2 h-4 w-4" /> Export
+              </Button>
+            </div>
           </div>
 
           <motion.div
@@ -94,7 +123,43 @@ const TripResults = ({ trip, onBack }: Props) => {
         </motion.div>
       </div>
 
-      {/* Itinerary */}
+      {/* Cost breakdown */}
+      <div className="container pb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="bg-card border border-border rounded-[2rem] p-8 md:p-10"
+        >
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary mb-6">
+            <Wallet className="h-4 w-4" /> Estimated cost · {cost.nights} nights
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: "Stay", value: cost.stay },
+              { label: "Food", value: cost.food },
+              { label: "Activities", value: cost.activities },
+              { label: "Transport", value: cost.transport },
+            ].map((item) => (
+              <div key={item.label}>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">{item.label}</div>
+                <div className="font-serif text-2xl mt-1">{formatINR(item.value)}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Estimated total</div>
+              <div className="font-serif text-4xl md:text-5xl text-primary">{formatINR(cost.total)}</div>
+            </div>
+            <div className="text-sm text-muted-foreground max-w-sm">
+              Indicative for two travellers. Actuals vary by season, availability, and personal choices.
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
       <div className="container pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,11 @@ import manali from "@/assets/dest-manali.jpg";
 import jaipur from "@/assets/dest-jaipur.jpg";
 import udaipur from "@/assets/dest-udaipur.jpg";
 import kerala from "@/assets/dest-kerala.jpg";
+import ladakh from "@/assets/dest-ladakh.jpg";
+import andaman from "@/assets/dest-andaman.jpg";
+import rishikesh from "@/assets/dest-rishikesh.jpg";
+import darjeeling from "@/assets/dest-darjeeling.jpg";
+import varanasi from "@/assets/dest-varanasi.jpg";
 
 export type BudgetTier = "low" | "medium" | "high";
 
@@ -309,6 +314,276 @@ export const destinations: Destination[] = [
       },
     },
   },
+  {
+    id: "ladakh",
+    name: "Ladakh",
+    region: "Trans-Himalaya",
+    tagline: "High-altitude deserts under an endless indigo sky",
+    image: ladakh,
+    tiers: {
+      low: {
+        hotel: { name: "Zostel Leh", type: "Mountain Hostel", pricePerNight: 1100, perks: ["Rooftop chai", "Bike rentals", "Central Leh"] },
+        days: [
+          { day: 1, title: "Leh Acclimatize", activities: [
+            { time: "09:00", title: "Bowl breakfast at Bon Appetit", detail: "Yak cheese & apricot jam", icon: "utensils" },
+            { time: "12:00", title: "Leh market wander", detail: "Pashmina & prayer wheels", icon: "compass" },
+            { time: "18:00", title: "Shanti Stupa sunset", detail: "Panoramic Leh views", icon: "sunrise" },
+          ]},
+          { day: 2, title: "Monasteries", activities: [
+            { time: "08:00", title: "Thiksey Monastery", detail: "Morning prayer chants", icon: "mountain" },
+            { time: "13:00", title: "Local thukpa lunch", detail: "Warm Ladakhi noodles", icon: "utensils" },
+            { time: "20:00", title: "Bonfire at Gesmo Café", detail: "Live folk guitar", icon: "sparkles" },
+          ]},
+        ],
+      },
+      medium: {
+        hotel: { name: "The Grand Dragon Ladakh", type: "4-Star Boutique", pricePerNight: 6800, perks: ["Oxygen rooms", "Mountain view suite", "Curated breakfast"] },
+        days: [
+          { day: 1, title: "Nubra Gateway", activities: [
+            { time: "09:00", title: "Drive over Khardung La", detail: "World's highest motorable pass", icon: "mountain" },
+            { time: "14:00", title: "Diskit Monastery visit", detail: "Giant Maitreya Buddha", icon: "compass" },
+            { time: "19:30", title: "Nubra camp dinner", detail: "Sand dunes at dusk", icon: "moon" },
+          ]},
+          { day: 2, title: "Pangong Blue", activities: [
+            { time: "07:00", title: "Drive to Pangong Lake", detail: "Chang La high pass en route", icon: "mountain" },
+            { time: "13:00", title: "Lakeside packed lunch", detail: "By the sapphire waters", icon: "utensils" },
+            { time: "20:00", title: "Stargazing dinner", detail: "Milky Way over Pangong", icon: "sparkles" },
+          ]},
+        ],
+      },
+      high: {
+        hotel: { name: "The Ultimate Travelling Camp Chamba", type: "5-Star Luxury Camp", pricePerNight: 32000, perks: ["Private luxe tent", "Butler & chef", "Guided expeditions"] },
+        days: [
+          { day: 1, title: "Royal Ladakh Arrival", activities: [
+            { time: "10:00", title: "Champagne breakfast in-tent", detail: "Panoramic valley views", icon: "utensils" },
+            { time: "14:00", title: "Private Thiksey heritage tour", detail: "With resident historian", icon: "compass" },
+            { time: "20:30", title: "Chef's Ladakhi tasting menu", detail: "Modern Trans-Himalayan", icon: "sparkles" },
+          ]},
+          { day: 2, title: "Pangong Private", activities: [
+            { time: "07:00", title: "Chauffeured Pangong drive", detail: "SUV with photography stops", icon: "mountain" },
+            { time: "13:00", title: "Lakeside gourmet picnic", detail: "Chef-plated riverside", icon: "utensils" },
+            { time: "20:00", title: "Private bonfire under stars", detail: "Astronomer-guided", icon: "moon" },
+          ]},
+        ],
+      },
+    },
+  },
+  {
+    id: "andaman",
+    name: "Andaman",
+    region: "Bay of Bengal",
+    tagline: "Turquoise lagoons and coral gardens under a slow sun",
+    image: andaman,
+    tiers: {
+      low: {
+        hotel: { name: "Havelock Beach Resort", type: "Beach Cottages", pricePerNight: 1500, perks: ["Steps to Radhanagar", "Bicycle rental", "Beach shack meals"] },
+        days: [
+          { day: 1, title: "Radhanagar Slow Day", activities: [
+            { time: "09:00", title: "Beachside breakfast", detail: "Coconut pancakes", icon: "utensils" },
+            { time: "12:00", title: "Radhanagar Beach swim", detail: "Asia's iconic white sand", icon: "waves" },
+            { time: "19:00", title: "Sunset at Kalapathar", detail: "Black rocks & orange sky", icon: "moon" },
+          ]},
+          { day: 2, title: "Snorkel Elephant Beach", activities: [
+            { time: "08:00", title: "Shared ferry to Elephant Beach", detail: "Colorful reef views", icon: "waves" },
+            { time: "13:00", title: "Shack lunch with fresh catch", detail: "Grilled snapper", icon: "utensils" },
+            { time: "20:00", title: "Beach bonfire hangout", detail: "Backpacker vibes", icon: "sparkles" },
+          ]},
+        ],
+      },
+      medium: {
+        hotel: { name: "SeaShell Havelock", type: "4-Star Beach Resort", pricePerNight: 7500, perks: ["Sea-view villa", "Infinity pool", "Diving school onsite"] },
+        days: [
+          { day: 1, title: "Reef Discovery", activities: [
+            { time: "09:00", title: "Poolside brunch", detail: "Tropical fruit platter", icon: "utensils" },
+            { time: "13:00", title: "Discover scuba session", detail: "Beginner reef dive", icon: "waves" },
+            { time: "20:00", title: "Beachfront dinner", detail: "Andaman lobster", icon: "moon" },
+          ]},
+          { day: 2, title: "Neil Island", activities: [
+            { time: "08:00", title: "Ferry to Neil Island", detail: "Bharatpur bay views", icon: "waves" },
+            { time: "13:00", title: "Natural bridge walk", detail: "Coral rock formations", icon: "compass" },
+            { time: "19:30", title: "Laxmanpur sunset", detail: "Golden light on tide pools", icon: "sparkles" },
+          ]},
+        ],
+      },
+      high: {
+        hotel: { name: "Taj Exotica Havelock", type: "5-Star Overwater Luxury", pricePerNight: 42000, perks: ["Beachfront villa", "Private butler", "Signature spa"] },
+        days: [
+          { day: 1, title: "Island Luxe Arrival", activities: [
+            { time: "10:00", title: "Villa deck breakfast", detail: "Sea breeze & sparkling wine", icon: "utensils" },
+            { time: "14:00", title: "Private catamaran sail", detail: "Snorkel remote reefs", icon: "waves" },
+            { time: "20:30", title: "Settler's chef table", detail: "Andamanese tasting menu", icon: "sparkles" },
+          ]},
+          { day: 2, title: "Wellness & Diving", activities: [
+            { time: "08:00", title: "Beach yoga pavilion", detail: "Sunrise pranayama", icon: "sunrise" },
+            { time: "11:00", title: "Guided reef dive", detail: "Manta rays if lucky", icon: "waves" },
+            { time: "20:00", title: "Candlelit sandbank dinner", detail: "Private isle for two", icon: "moon" },
+          ]},
+        ],
+      },
+    },
+  },
+  {
+    id: "rishikesh",
+    name: "Rishikesh",
+    region: "Uttarakhand",
+    tagline: "Where the Ganga sings between forested foothills",
+    image: rishikesh,
+    tiers: {
+      low: {
+        hotel: { name: "Live Free Hostel", type: "Riverside Hostel", pricePerNight: 800, perks: ["Ganga view rooftop", "Yoga daily", "Café downstairs"] },
+        days: [
+          { day: 1, title: "Ganga & Ghats", activities: [
+            { time: "07:00", title: "Sunrise Ganga walk", detail: "Laxman Jhula bridge", icon: "sunrise" },
+            { time: "09:00", title: "Café breakfast", detail: "Muesli bowls & masala chai", icon: "utensils" },
+            { time: "18:30", title: "Triveni Ghat aarti", detail: "Floating lamps at dusk", icon: "moon" },
+          ]},
+          { day: 2, title: "Adventure Day", activities: [
+            { time: "08:00", title: "White water rafting", detail: "16 km grade III stretch", icon: "waves" },
+            { time: "13:00", title: "Beach shack lunch", detail: "Riverside bhojan", icon: "utensils" },
+            { time: "20:00", title: "Open-mic at Free Spirit", detail: "Traveler jam sessions", icon: "sparkles" },
+          ]},
+        ],
+      },
+      medium: {
+        hotel: { name: "Aloha on the Ganges", type: "4-Star Riverside", pricePerNight: 5500, perks: ["River-facing room", "Ayurveda spa", "Yoga deck"] },
+        days: [
+          { day: 1, title: "Wellness Immersion", activities: [
+            { time: "07:00", title: "Sunrise hatha yoga", detail: "Riverside deck", icon: "sunrise" },
+            { time: "12:00", title: "Ayurvedic consult & lunch", detail: "Sattvic thali", icon: "utensils" },
+            { time: "19:00", title: "Parmarth Niketan aarti", detail: "Iconic evening ceremony", icon: "moon" },
+          ]},
+          { day: 2, title: "Beatles Ashram", activities: [
+            { time: "09:00", title: "Beatles Ashram walk", detail: "Graffitied meditation domes", icon: "compass" },
+            { time: "13:00", title: "Café Ganga Beach lunch", detail: "Wood-fire pizzas", icon: "utensils" },
+            { time: "19:30", title: "Bonfire kirtan", detail: "Ashram grounds", icon: "sparkles" },
+          ]},
+        ],
+      },
+      high: {
+        hotel: { name: "Ananda in the Himalayas", type: "5-Star Wellness Palace", pricePerNight: 38000, perks: ["Palace suite", "70+ spa therapies", "Private yoga master"] },
+        days: [
+          { day: 1, title: "Palace Wellness", activities: [
+            { time: "08:00", title: "Private yoga in Viceregal Palace", detail: "Curated by master", icon: "sunrise" },
+            { time: "13:00", title: "Wellness cuisine lunch", detail: "Dosha-aligned menu", icon: "utensils" },
+            { time: "19:00", title: "Private aarti boat", detail: "On the Ganga with priest", icon: "sparkles" },
+          ]},
+          { day: 2, title: "Signature Spa", activities: [
+            { time: "09:00", title: "90-min Abhyanga & Shirodhara", detail: "Signature therapy", icon: "sparkles" },
+            { time: "13:00", title: "Chef's tasting", detail: "Himalayan-inspired", icon: "utensils" },
+            { time: "20:00", title: "Suite dining under stars", detail: "Palace terrace", icon: "moon" },
+          ]},
+        ],
+      },
+    },
+  },
+  {
+    id: "darjeeling",
+    name: "Darjeeling",
+    region: "West Bengal",
+    tagline: "Tea-scented mist rolling over emerald slopes",
+    image: darjeeling,
+    tiers: {
+      low: {
+        hotel: { name: "Revolver Hotel", type: "Boutique Guesthouse", pricePerNight: 1600, perks: ["Beatles-themed rooms", "Central Chowrasta", "Home cooked meals"] },
+        days: [
+          { day: 1, title: "Chowrasta & Chai", activities: [
+            { time: "09:00", title: "Keventer's breakfast", detail: "Sausages with a view", icon: "utensils" },
+            { time: "12:00", title: "Mall Road stroll", detail: "Chowrasta buskers", icon: "compass" },
+            { time: "19:00", title: "Glenary's dinner", detail: "Colonial bakery classic", icon: "moon" },
+          ]},
+          { day: 2, title: "Tiger Hill Dawn", activities: [
+            { time: "04:00", title: "Tiger Hill sunrise", detail: "Kanchenjunga glow", icon: "sunrise" },
+            { time: "10:00", title: "Toy train joyride", detail: "Ghum heritage loop", icon: "compass" },
+            { time: "20:00", title: "Sonam's Kitchen dinner", detail: "Homely Tibetan thenthuk", icon: "sparkles" },
+          ]},
+        ],
+      },
+      medium: {
+        hotel: { name: "Mayfair Darjeeling", type: "4-Star Heritage", pricePerNight: 6200, perks: ["Cottage suites", "Fireplace lounges", "Spa access"] },
+        days: [
+          { day: 1, title: "Tea Estate Walk", activities: [
+            { time: "09:00", title: "Estate breakfast", detail: "First flush tea tasting", icon: "utensils" },
+            { time: "12:00", title: "Happy Valley plantation tour", detail: "Pluckers at work", icon: "compass" },
+            { time: "19:30", title: "Cottage fireside dinner", detail: "Continental & momos", icon: "moon" },
+          ]},
+          { day: 2, title: "Peaks & Rituals", activities: [
+            { time: "08:00", title: "Rock Garden drive", detail: "Layered waterfalls", icon: "mountain" },
+            { time: "13:00", title: "Nathmulls tea lunch", detail: "Curated pairing menu", icon: "utensils" },
+            { time: "20:00", title: "Live sitar dinner", detail: "Mayfair lawn", icon: "sparkles" },
+          ]},
+        ],
+      },
+      high: {
+        hotel: { name: "Glenburn Tea Estate", type: "5-Star Colonial Bungalow", pricePerNight: 28000, perks: ["Private planter suite", "Personal butler", "All meals & tea tastings"] },
+        days: [
+          { day: 1, title: "Planter's Life", activities: [
+            { time: "09:00", title: "Verandah breakfast", detail: "Estate eggs & scones", icon: "utensils" },
+            { time: "12:00", title: "Private plantation walk", detail: "With head planter", icon: "compass" },
+            { time: "20:00", title: "Colonial candlelit dinner", detail: "5-course chef menu", icon: "sparkles" },
+          ]},
+          { day: 2, title: "Rungeet River", activities: [
+            { time: "08:00", title: "River picnic breakfast", detail: "By the Rungeet", icon: "sunrise" },
+            { time: "13:00", title: "Tea sommelier session", detail: "Vintage first flush", icon: "utensils" },
+            { time: "20:00", title: "Bonfire under Kanchenjunga", detail: "Estate lawn", icon: "moon" },
+          ]},
+        ],
+      },
+    },
+  },
+  {
+    id: "varanasi",
+    name: "Varanasi",
+    region: "Uttar Pradesh",
+    tagline: "Ancient lanes and lantern-lit boats on the eternal river",
+    image: varanasi,
+    tiers: {
+      low: {
+        hotel: { name: "Stops Hostel Varanasi", type: "Old-city Hostel", pricePerNight: 900, perks: ["Rooftop ghat view", "Walking tours", "Café below"] },
+        days: [
+          { day: 1, title: "Ghats on Foot", activities: [
+            { time: "07:00", title: "Assi Ghat morning aarti", detail: "Sunrise ceremony", icon: "sunrise" },
+            { time: "12:00", title: "Blue Lassi Shop", detail: "300+ flavor legend", icon: "utensils" },
+            { time: "18:30", title: "Dashashwamedh Ghat aarti", detail: "Grand evening ritual", icon: "moon" },
+          ]},
+          { day: 2, title: "Alleys & Silks", activities: [
+            { time: "09:00", title: "Kachori Gali breakfast", detail: "Puri sabzi & jalebi", icon: "utensils" },
+            { time: "13:00", title: "Silk weaver visit", detail: "Banarasi heritage", icon: "compass" },
+            { time: "19:00", title: "Boat ride with diyas", detail: "Float lamps on Ganga", icon: "waves" },
+          ]},
+        ],
+      },
+      medium: {
+        hotel: { name: "BrijRama Palace", type: "Heritage 4-Star Ghat Palace", pricePerNight: 8000, perks: ["Ganga-facing suite", "Boat access", "Live sarod evenings"] },
+        days: [
+          { day: 1, title: "Palace on the Ghats", activities: [
+            { time: "07:00", title: "Private boat sunrise", detail: "Palace jetty departure", icon: "sunrise" },
+            { time: "12:00", title: "Palace lunch", detail: "Awadhi thali", icon: "utensils" },
+            { time: "18:30", title: "Balcony aarti view", detail: "Front row over Ganga", icon: "moon" },
+          ]},
+          { day: 2, title: "Sarnath Day", activities: [
+            { time: "09:00", title: "Sarnath Buddhist site", detail: "Dhamek Stupa", icon: "compass" },
+            { time: "13:00", title: "Museum & lunch", detail: "Lion Capital of Ashoka", icon: "utensils" },
+            { time: "20:00", title: "Sarod recital dinner", detail: "Palace courtyard", icon: "sparkles" },
+          ]},
+        ],
+      },
+      high: {
+        hotel: { name: "Taj Nadesar Palace", type: "5-Star Royal Palace", pricePerNight: 34000, perks: ["Royal suite", "Butler & vintage car", "Private aarti boat"] },
+        days: [
+          { day: 1, title: "Royal Banaras", activities: [
+            { time: "09:00", title: "Palace veranda breakfast", detail: "Mango orchard view", icon: "utensils" },
+            { time: "14:00", title: "Vintage car ghat tour", detail: "1930s convertible", icon: "compass" },
+            { time: "18:30", title: "Private aarti boat", detail: "Curated with priest", icon: "moon" },
+          ]},
+          { day: 2, title: "Spa & Silks", activities: [
+            { time: "09:00", title: "Jiva Spa royal ritual", detail: "Kashi-inspired therapy", icon: "sparkles" },
+            { time: "13:00", title: "Private silk atelier visit", detail: "Bespoke Banarasi weave", icon: "compass" },
+            { time: "20:00", title: "Chef's tasting menu", detail: "Modern Banarasi cuisine", icon: "sparkles" },
+          ]},
+        ],
+      },
+    },
+  },
 ];
 
 export const categorizeBudget = (budget: number): BudgetTier => {
@@ -321,10 +596,12 @@ export const tierLabel = (tier: BudgetTier) =>
   tier === "low" ? "Essentials" : tier === "medium" ? "Comfort" : "Signature";
 
 export interface GeneratedTrip {
+  id?: string;
   destination: Destination;
   budget: number;
   tier: BudgetTier;
   plan: TierPlan;
+  createdAt?: number;
 }
 
 export const generateTrip = (destinationId: string, budget: number): GeneratedTrip | null => {
@@ -333,3 +610,52 @@ export const generateTrip = (destinationId: string, budget: number): GeneratedTr
   const tier = categorizeBudget(budget);
   return { destination, budget, tier, plan: destination.tiers[tier] };
 };
+
+export interface CostBreakdown {
+  stay: number;
+  food: number;
+  activities: number;
+  transport: number;
+  total: number;
+  nights: number;
+}
+
+export const estimateCost = (trip: GeneratedTrip): CostBreakdown => {
+  const nights = trip.plan.days.length;
+  const stay = trip.plan.hotel.pricePerNight * nights;
+  const tierMult = trip.tier === "low" ? 1 : trip.tier === "medium" ? 1.6 : 2.6;
+  const food = Math.round(800 * tierMult * (nights + 1));
+  const activities = Math.round(1500 * tierMult * nights);
+  const transport = Math.round(3500 * tierMult);
+  const total = stay + food + activities + transport;
+  return { stay, food, activities, transport, total, nights };
+};
+
+const SAVED_KEY = "tripwise:saved";
+
+export const getSavedTrips = (): GeneratedTrip[] => {
+  try {
+    const raw = localStorage.getItem(SAVED_KEY);
+    return raw ? (JSON.parse(raw) as GeneratedTrip[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+export const saveTrip = (trip: GeneratedTrip): GeneratedTrip => {
+  const withMeta: GeneratedTrip = {
+    ...trip,
+    id: trip.id ?? `${trip.destination.id}-${Date.now()}`,
+    createdAt: trip.createdAt ?? Date.now(),
+  };
+  const existing = getSavedTrips().filter((t) => t.id !== withMeta.id);
+  const next = [withMeta, ...existing].slice(0, 20);
+  localStorage.setItem(SAVED_KEY, JSON.stringify(next));
+  return withMeta;
+};
+
+export const removeSavedTrip = (id: string) => {
+  const next = getSavedTrips().filter((t) => t.id !== id);
+  localStorage.setItem(SAVED_KEY, JSON.stringify(next));
+};
+

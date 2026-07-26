@@ -7,12 +7,17 @@ import { ArrowRight, MapPin, Wallet } from "lucide-react";
 
 interface Props {
   onGenerate: (destinationId: string, budget: number) => void;
+  initialDestination?: string;
 }
 
-const TripPlanner = ({ onGenerate }: Props) => {
-  const [destination, setDestination] = useState<string>("goa");
+const TripPlanner = ({ onGenerate, initialDestination }: Props) => {
+  const [destination, setDestination] = useState<string>(initialDestination ?? "goa");
   const [budget, setBudget] = useState<number>(35000);
   const tier = categorizeBudget(budget);
+
+  useEffect(() => {
+    if (initialDestination) setDestination(initialDestination);
+  }, [initialDestination]);
 
   const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
